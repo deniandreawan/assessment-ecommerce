@@ -1,6 +1,6 @@
 import { Grid, Button } from "@material-ui/core";
-import { makeStyles, StylesProvider } from "@material-ui/core/styles";
-import { useProductDetails } from "../hooks/useProductDetails";
+import { makeStyles } from "@material-ui/core/styles";
+import { useProductDetails } from "../../hooks/useProductDetails";
 import Loading from "./Loading";
 
 const useStyles = makeStyles((theme) => ({

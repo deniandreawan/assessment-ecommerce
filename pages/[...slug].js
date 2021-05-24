@@ -1,11 +1,10 @@
 import { useRouter } from "next/router";
 import withApollo from "../apollo/client";
-import Product from "../components/Product";
-import Category from "../components/Category";
+import { Category, Product } from "../components/shared";
 import { GET_URL_RESOLVER } from "../apollo/queries/getUrlResolver";
 import { useQuery } from "@apollo/client";
-import Layout from "../components/Layout";
-import Loading from "../components/Loading";
+import { Layout } from "../components/common";
+import { Loading } from "../components/shared";
 
 function Slug() {
   const router = useRouter();

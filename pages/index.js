@@ -1,18 +1,10 @@
 import { useEffect } from "react";
-import Link from "next/link";
 import { useCategories } from "../hooks/useCategories";
 import withApollo from "../apollo/client";
-import {
-  Card,
-  CardMedia,
-  CardContent,
-  CardActionArea,
-  Typography,
-  GridList,
-} from "@material-ui/core";
+import { GridList } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
-import Layout from "../components/Layout";
-import Loading from "../components/Loading";
+import { Layout, CardCategory } from "../components/common";
+import { Header, Loading } from "../components/shared";
 
 const useStyles = makeStyles(() => ({
   root: {
@@ -22,7 +14,7 @@ const useStyles = makeStyles(() => ({
     maxWidth: 500,
     margin: "0 auto 20px auto",
   },
-  rootCard: {
+  main: {
     display: "flex",
     flexWrap: "wrap",
     justifyContent: "center",
@@ -60,34 +52,21 @@ function Index() {
   return (
     <Layout>
       <div className={classes.root}>
-        <h1>Mini Ecommerce</h1>
-        <p className={classes.description}>
-          A Shopping Cart built with NextJS, React, Redux, Apollo Client,
-          Magento GraphQL API, and Material UI.
-        </p>
-
-        <div className={classes.rootCard}>
+        <Header
+          title="Mini Ecommerce"
+          subtitle="A Shopping Cart built with NextJS, React, Redux, Apollo Client, Magento
+        GraphQL API, and Material UI."
+        />
+        <div className={classes.main}>
           {categories.map((item, index) => (
             <GridList cellHeight={320} cols={4} spacing={20}>
-              <div>
-                <Link href="/[...slug]" as={`/${item.url_key}`} key={index}>
-                  <Card className={classes.card}>
-                    <CardActionArea>
-                      <CardMedia
-                        className="cardMedia"
-                        image={
-                          item.productPreviewImage?.items[0]?.small_image
-                            ?.url ||
-                          "https://swiftpwa-be.testingnow.me/static/version1621477697/frontend/Pearl/weltpixel_custom/en_US/Magento_Catalog/images/product/placeholder/small_image.jpg"
-                        }
-                        title="Image title"
-                      />
-                      <CardContent className="cardName">
-                        <Typography variant="subtitle2">{item.name}</Typography>
-                      </CardContent>
-                    </CardActionArea>
-                  </Card>
-                </Link>
+              <div key={index}>
+                <CardCategory
+                  image={item.productPreviewImage?.items[0]?.small_image?.url}
+                  title={item.name}
+                  link={item.url_key}
+                  key={index}
+                />
               </div>
             </GridList>
           ))}

@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux";
 import { Card } from "@material-ui/core";
-import Layout from "../components/Layout";
+import { Layout } from "../components/common";
 
 export default function Cart() {
   const { cart } = useSelector((state) => state.cart);

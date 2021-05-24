@@ -23,32 +23,33 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Layout({ children }) {
+export default function Navbar() {
   const { cart } = useSelector((state) => state.cart);
   const classes = useStyles();
 
   return (
     <div className={classes.root}>
       <AppBar position="static">
-        <Toolbar>
-          <Typography variant="h6" className={classes.title}>
-            Ecommerce
-          </Typography>
-          <Link href="/cart">
-            <IconButton
-              aria-label="cart"
-              aria-controls="menu-appbar"
-              aria-haspopup="true"
-              color="inherit"
-            >
-              <Badge badgeContent={cart.length} color="secondary">
-                <ShoppingBasket />
-              </Badge>
-            </IconButton>
-          </Link>
-        </Toolbar>
+        <Container maxWidth="md">
+          <Toolbar>
+            <Typography variant="h6" className={classes.title}>
+              Ecommerce
+            </Typography>
+            <Link href="/cart">
+              <IconButton
+                aria-label="cart"
+                aria-controls="menu-appbar"
+                aria-haspopup="true"
+                color="inherit"
+              >
+                <Badge badgeContent={cart.length} color="secondary">
+                  <ShoppingBasket />
+                </Badge>
+              </IconButton>
+            </Link>
+          </Toolbar>
+        </Container>
       </AppBar>
-      <Container>{children}</Container>
     </div>
   );
 }
