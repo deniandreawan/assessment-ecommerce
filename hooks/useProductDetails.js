@@ -17,7 +17,7 @@ export const useProductDetails = ({ url }) => {
   console.log(cart);
 
   const addToCart = () => {
-    if (itemIndex === -1) {
+    if (item === -1) {
       newCart = [...cart, { ...product, qty }];
     } else {
       qty += cart[item].qty;
